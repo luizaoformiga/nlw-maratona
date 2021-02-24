@@ -1,0 +1,18 @@
+{
+   "type": "postgres",
+   "host": "localhost",
+   "port": 5432,
+   "username": "postgres",
+   "password": "defjam",
+   "database": "postgres",
+   "synchronize": true,
+   "logging": false,
+   "controllers": [ "src/api/controllers/**/*.ts" ],
+   "migration": [ "src/api/migration/**/*.ts" ],
+   "entity": [ "src/api/entity/**/*.ts" ], 
+   "cli": {
+      "controllersDir": "src/api/controllers",
+      "migrationDir": "src/api/migration",
+      "entityDir": "src/api/entity"
+   }
+}

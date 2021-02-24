@@ -1,5 +1,9 @@
-// const routes = express.Router();
+import { Router } from 'express';
+import { createMetods } from '../controller/userController'; 
 
-// routes.get('/', (request: Request, response: Response) => {
-//    return response.json([message: String]);
-// })
+const route = Router();
+
+
+route.post('/', createMetods);
+
+export default route;

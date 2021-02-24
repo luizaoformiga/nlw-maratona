@@ -7,13 +7,12 @@
       "dom"
     ],
     "declaration": true,
-    "target": "es6",
     "noImplicitAny": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "outDir": "./build",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "sourceMap": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -23,7 +22,9 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "noEmit": true
+    "noEmit": true,
+    "target": "esnext",
+    "module": "commonjs",
   },
   "include": [
     "src"
