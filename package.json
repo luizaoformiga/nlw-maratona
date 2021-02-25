@@ -7,10 +7,12 @@
     "dev": "npx ts-node-dev src/api/server.ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "jest": "26.6.3",
+    "@types/jest": "^26.0.20",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.3",
@@ -46,6 +48,7 @@
     "@types/customize-cra": "^1.0.0",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "ts-jest": "^26.5.2",
     "ts-node": "^3.3.0"
   },
   "eslintConfig": {

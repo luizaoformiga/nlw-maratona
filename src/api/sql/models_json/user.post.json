@@ -1,0 +1,18 @@
+[
+    {
+       "post": {
+          "name": "Luiz Lima",
+          "email": "gina@hotbailw.com"
+        }  
+    },
+
+
+    {
+        "response_post": {
+           "id": "código do id do usuário gerado",
+           "name": "Luiz Lima",
+           "email": "gina@hotbailw.com",
+           "create_at": "data, hora e etc de quando o usu´rio foi criado"
+        }
+    }   
+]

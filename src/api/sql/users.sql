@@ -1,11 +1,4 @@
-     
-/* npx typeorm migration:run */
-
-/*
-   RESULTADO NO TERMINAL QUANDO SE FAZ O COMANDO ACIMA, ELE CRIA ESSA QUERY
-
-*/
-
+/* USUARIOS */
 SELECT * FROM "information_schema"."tables" 
 WHERE "table_schema" = current_schema() 
 AND "table_name" = 'migrations'
@@ -18,3 +11,5 @@ CREATE TABLE "migrations" (
 
 SELECT * FROM "migrations" "migrations"  
 ORDER BY "id" DESC
+
+

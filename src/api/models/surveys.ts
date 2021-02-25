@@ -1,21 +1,16 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import  { v4 as uuid } from 'uuid';
 
-@Entity()
-export class Tasks {
+@Entity("surveys")
+export class Surveys {
     @PrimaryGeneratedColumn()
     readonly id: String | undefined;
     
     @Column()
-    name: String | undefined;
+    title: String | undefined;
     
     @Column()
-    email: String | undefined;
-    
-    @Column({
-        default: false
-    })
-    finished: Boolean | undefined;
+    description: String | undefined;
 
     @CreateDateColumn()
     created_at: Date | undefined;
@@ -24,3 +19,6 @@ export class Tasks {
         if(!this.id) this.id = uuid();
     }
 }
+
+
+
