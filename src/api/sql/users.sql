@@ -7,7 +7,8 @@ CREATE TABLE "migrations" (
     "id" SERIAL NOT NULL, 
     "timestamp" bigint NOT NULL, 
     "name" character varying NOT NULL, CONSTRAINT 
-    "PK_8c82d7f526340ab734260ea46be" PRIMARY KEY ("id"))
+    "PK_8c82d7f526340ab734260ea46be" PRIMARY KEY ("id")
+)
 
 SELECT * FROM "migrations" "migrations"  
 ORDER BY "id" DESC
