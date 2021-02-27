@@ -1,18 +1,18 @@
 {
    "type": "postgres",
-   "host": "localhost",
-   "port": 5442,
-   "username": "postgres",
-   "password": "your password",
    "database": "postgres",
+   "host": "localhost",
+   "username": "postgres",
+   "password": "your password here",
+   "port": 5432,
    "synchronize": true,
    "logging": true,
-   "__test__": [ "src/api/__test__/**/*.{js, ts}" ],   
-   "controllers": [ "src/api/controllers/**/*.{js, ts}" ],
-   "migration": [ "src/api/migration/**/*.{js, ts}" ], 
-   "models": [ "src/api/models/**/*.{js, ts}" ],
+   "__test__": [ "src/api/__test__/**/*.ts" ],   
+   "controllers": [ "src/api/controllers/**/*.ts" ],
+   "migration": [ "src/api/migration/**/*.ts" ], 
+   "models": [ "src/api/models/**/*.ts" ],
    "repositories": [ "src/api/repositories/**/*.ts" ],
-   "routes": [ "src/api/routes/*.{js, ts}" ],
+   "routes": [ "src/api/routes/**/*.ts" ],
    "cli": {
       "migrationDir": "src/api/migration"
    }

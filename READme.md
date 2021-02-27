@@ -12,9 +12,10 @@
     - Typeorm
     - PostgreSQL
 
-### ADAPTÇÕES
+### ADAPATÇÕES
  * Foram feita algumas mudanças: 
     - Banco de dados.
+    - Alguns métodos HTTP a mais como (delete, put, patch).
     - React para fazer o Front-end.
     - Algumas configurações para ser rodado na máquina que uso, no caso, Windows.
     - Telas feitas customizadas por mim mesmo.

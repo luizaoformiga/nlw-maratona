@@ -30,9 +30,16 @@ describe("Surveys", () => {
 
         expect(response.body.length).toBe(2); // tamanho do array seja igual a 2
     })
+    
     // YES DELETE
-    // NOT DELETE
-
+    it("Esse teste tem que deletar", async () => {
+        const response = await request(app).delete("/surveys/:id").send({
+            title: "How are you?",
+            description: "lorem ipsum master on high"
+        }) 
+        expect(response.status).toBe(201);
+    })
+    
     // YES PUT 
     // NOT PUT
 
