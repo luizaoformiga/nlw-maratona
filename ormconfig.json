@@ -3,16 +3,17 @@
    "host": "localhost",
    "port": 5432,
    "username": "postgres",
-   "password": "defjam",
+   "password": "your password",
    "database": "postgres",
    "synchronize": true,
    "logging": true,
-   "controllers": [ "src/api/controllers/**/*.ts" ],
-   "migration": [ "src/api/migration/**/*.ts" ],
-   "entity": [ "src/api/entity/**/*.ts" ], 
+   "__test__": [ "src/api/__test__/**/*.{js, ts}" ],   
+   "controllers": [ "src/api/controllers/**/*.{js, ts}" ],
+   "migration": [ "src/api/migration/**/*.{js, ts}" ], 
+   "models": [ "src/api/models/**/*.{js, ts}" ],
+   "repositories": [ "src/api/repositories/**/*.ts" ],
+   "routes": [ "src/api/routes/*.{js, ts}" ],
    "cli": {
-      "controllersDir": "src/api/controllers",
-      "migrationDir": "src/api/migration",
-      "entityDir": "src/api/entity"
+      "migrationDir": "src/api/migration"
    }
 }

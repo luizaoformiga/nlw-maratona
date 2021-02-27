@@ -3,7 +3,6 @@ import { getCustomRepository } from 'typeorm';
 import { SurveysRepository } from '../repositories/surveyRepositories';
 
 export class SurveyController {
-    // POST
     async postSurveyController (request: Request, response: Response) {
         const { title, description } = request.body;
         const surveyRepository = getCustomRepository(SurveysRepository);
@@ -13,58 +12,57 @@ export class SurveyController {
         return response.status(201).json(survey);
     }
 
-    // GET
     async getSurveyController (request: Request, response: Response) {
         const surveyRepositoryVariable = getCustomRepository(SurveysRepository);
         const all = await surveyRepositoryVariable.find();
 
-        return response.json(all);
+        return response.status(200).json(all);
     }
     
-    // GET ID ESPECÍFICO
-    async getSurveyControllerId (request: Request, response: Response) {
-        const { id } = request.params;
-        const surveyId = await getCustomRepository(SurveysRepository).findOne(id);
+    async getSurveyControllerEspecific (request: Request, response: Response) {
+        const { title, description } = request.params;
+        const surveyId = await getCustomRepository(SurveysRepository).findOne({ title, description });
+
+        if (!surveyId) {
+           response.status(404).json(surveyId);
+        }
 
         return response.json(surveyId);
     }
 
-    // PUT
     async putSurveyController (request: Request, response: Response) {
-    const { id } = request.params;
-    const task = await getCustomRepository(SurveysRepository).update(id, request.body);
+        const { title, description } = request.params;
+        const putSurvey = await getCustomRepository(SurveysRepository).update({ title, description }, request.body);
  
-        if(task.affected === 1) {
-           const tasksUpdate = await getCustomRepository(SurveysRepository).findOne(id);
-           return response.json(tasksUpdate);
+        if(putSurvey.affected === 1) {
+           const tasksUpdate = await getCustomRepository(SurveysRepository).findOne({ title, description });
+           return response.status(200).json(tasksUpdate);
         } 
 
-        return response.status(404).json({ message: 'Tasks not found'});
+        return response.status(404).json({ message: 'Survey not found' });
     }
 
-    // PATCH
     async patchSurveyController (request: Request, response: Response) {
-    const { id } = request.params;
-    const surveyPatch = await getCustomRepository(SurveysRepository).update(id, { });
+        const { title, description } = request.params;
+        const surveyPatch = await getCustomRepository(SurveysRepository).update({ title, description }, request.body);
 
         if(surveyPatch.affected === 1) {
-           await getCustomRepository(SurveysRepository).findOne(id, { });
-           return response.json({ message: ' Task Finished'});
+           await getCustomRepository(SurveysRepository).findOne({ title, description });
+           return response.status(200).json({ message: ' Surveys Finished' });
         }
 
-        return response.status(404).json({ message: 'NOT FOUND'});
+        return response.status(404).json({ message: 'NOT FOUND' });
     }
 
-    // DELETE
     async deleteSurveyController (request: Request, response: Response) {
-       const { id } = request.params;
-       const removeSurvey = await getCustomRepository(SurveysRepository).delete(id);
+        const { title, description } = request.params;
+        const removeSurvey = await getCustomRepository(SurveysRepository).delete({ title, description });
 
         if(removeSurvey.affected === 1) {
-          await getCustomRepository(SurveysRepository).findOne(id);
-          return response.json({ message: ' Task removed'});
+          await getCustomRepository(SurveysRepository).findOne({ title, description });
+          return response.status(200).json({ message: ' Surveys removed' });
         }
  
-       return response.status(404).json({ message: 'NOT FOUND'});
+       return response.status(404).json({ message: 'NOT FOUND' });
     }
 }

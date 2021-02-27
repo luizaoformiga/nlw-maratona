@@ -4,7 +4,6 @@ import { UserRepository } from '../repositories/repositories';
 
 
 export class UserController {    
-    // POST
     async postUserController (request: Request, response: Response) {
         const { name, email } = request.body;      
         const userRepository = getCustomRepository(UserRepository);
@@ -17,53 +16,60 @@ export class UserController {
         const user = userRepository.create({ name, email });
     
         await userRepository.save(user);
-        return response.send();
+        return response.status(201).json();
     }
 
-    // GET
     async getUserController (request: Request, response: Response) {
         const userRepositoryVariable = getCustomRepository(UserRepository);
         const all = await userRepositoryVariable.find();
         
-        return response.json(all);
+        return response.status(200).json(all);
+    }
+
+    async getUserControllerEspecific (request: Request, response: Response) {
+        const { name, email } = request.params;
+        const userId = await getCustomRepository(UserRepository).find({ name, email });     
+        
+        if (!userId) {
+            return response.status(404).json(userId);
+        }
+
+        return response.status(200).json(userId);
     }
     
-    // PUT
     async putUserController (request: Request, response: Response) {
-        const { id } = request.params;
-        const putUser = await getCustomRepository(UserRepository).update(id, request.body);
+        const { name, email } = request.params;
+        const putUser = await getCustomRepository(UserRepository).update({ name, email }, request.body);
      
         if(putUser.affected === 1) {
-            const putUpdateUser = await getCustomRepository(UserRepository).findOne(id);
-            return response.json(putUpdateUser);
+            const putUpdateUser = await getCustomRepository(UserRepository).findOne({ name, email });
+            return response.status(200).json(putUpdateUser);
         } 
     
         return response.status(404).json({ message: 'Tasks not found'});
     }
     
-    // PATCH
     async patchUserController (request: Request, response: Response) {
-        const { id } = request.params;
-        const patchUser = await getCustomRepository(UserRepository).update(id, { });
+        const { name, email } = request.params;
+        const patchUser = await getCustomRepository(UserRepository).update({ name, email }, request.body);
 
         if(patchUser.affected === 1) { 
-           await getCustomRepository(UserRepository).findOne(id, { });
-           return response.json({ message: 'Finished'});
+           await getCustomRepository(UserRepository).findOne({ name, email });
+           return response.status(200).json({ message: 'Finished'});
         }
 
-        return response.status(404).json({ message: 'NOT FOUND'});
+        return response.status(404).json({ message: 'NOT FOUND' });
     }
     
-    // DELETE
     async deleteUserController (request: Request, response: Response) {
-        const { id } = request.params;
-        const removeUser = await getCustomRepository(UserRepository).delete(id);
+        const { name, email } = request.params;
+        const removeUser = await getCustomRepository(UserRepository).delete({ name, email });
  
         if(removeUser.affected === 1) {
-           await getCustomRepository(UserRepository).findOne(id);
-           return response.json({ message: ' Task removed'});
+           await getCustomRepository(UserRepository).findOne({ name, email });
+           return response.status(200).json({ message: ' User removed' });
         }
   
-        return response.status(404).json({ message: 'NOT FOUND'});
+        return response.status(404).json({ message: 'NOT FOUND' });
     }
 }

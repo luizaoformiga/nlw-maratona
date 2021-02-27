@@ -4,18 +4,21 @@ import  { v4 as uuid } from 'uuid';
 @Entity("users")
 export class User {
     @PrimaryColumn()
-    readonly id: String | undefined;
+    readonly id: String;
     
     @Column()
-    name: String | undefined;
+    public name: String;
     
     @Column()
-    email: String | undefined;
+    public email: String;
 
     @CreateDateColumn()
-    created_at: Date | undefined;
+    public created_at: Date;
 
     constructor() {
-        if(!this.id) this.id = uuid();
+        if(!this.id) {
+            this.id = uuid();
+        }
     }
 }
+
