@@ -1,19 +1,10 @@
 {
-   "type": "postgres",
-   "database": "postgres",
-   "host": "localhost",
-   "username": "postgres",
-   "password": "your password here",
-   "port": 5432,
-   "synchronize": true,
-   "logging": true,
-   "__test__": [ "src/api/__test__/**/*.ts" ],   
-   "controllers": [ "src/api/controllers/**/*.ts" ],
-   "migration": [ "src/api/migration/**/*.ts" ], 
-   "models": [ "src/api/models/**/*.ts" ],
-   "repositories": [ "src/api/repositories/**/*.ts" ],
-   "routes": [ "src/api/routes/**/*.ts" ],
+   "type": "sqlite",
+   "database": "./src/api/database/database.sqlite",
+   "migrations": ["./src/api/database/migrations/*.ts"],
+   "entities": ["./src/api/models/*.ts"],
    "cli": {
-      "migrationDir": "src/api/migration"
+     "migrationsDir": "./src/api/database/migrations"
    }
-}
+ }
+ 

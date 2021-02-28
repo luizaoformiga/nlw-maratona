@@ -7,13 +7,13 @@ export class Surveys {
     readonly id: String;
     
     @Column()
-    public title: String;
+    title: String;
     
     @Column()
-    public description: String;
+    description: String;
 
     @CreateDateColumn()
-    public created_at: Date;
+    created_at: Date;
 
     constructor() {
         if(!this.id) {

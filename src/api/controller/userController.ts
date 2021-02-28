@@ -3,7 +3,7 @@ import { getCustomRepository } from 'typeorm';
 import { UserRepository } from '../repositories/userRepositories';
 
 
-export class UserController {    
+export default class UserController {    
     async postUserController (request: Request, response: Response) {
         const { name, email } = request.body;      
         const userRepository = getCustomRepository(UserRepository);
